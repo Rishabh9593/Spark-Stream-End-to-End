@@ -1,0 +1,2 @@
+rishabh@Amazon:~/kafka/kafka_2.13-3.2.0/bin$ ./kafka-console-producer.sh --broker-list localhost:9092 --topic mytopic
+>rahul,k,http://1.1.1.1,dress,1

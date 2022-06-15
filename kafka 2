@@ -1,0 +1,8 @@
+rishabh@Amazon:~/kafka/kafka_2.13-3.2.0/bin$ ./kafka-topics.sh --create --bootstrap-server localhost:2181 --replication-factor 1 --partitions 1 --topic mytopic
+Error while executing topic command : Timed out waiting for a node assignment. Call: createTopics
+[2022-06-14 19:06:25,737] ERROR org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment. Call: createTopics
+ (kafka.admin.TopicCommand$)
+rishabh@Amazon:~/kafka/kafka_2.13-3.2.0/bin$ ./kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic mytopic
+Created topic mytopic.
+rishabh@Amazon:~/kafka/kafka_2.13-3.2.0/bin$ ./kafka-topics.sh --list --bootstrap-server localhost:9092
+

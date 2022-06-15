@@ -1,0 +1,124 @@
+rishabh@Amazon:~$ wget -q -O - https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+[sudo] password for rishabh: 
+OK
+rishabh@Amazon:~$ cho "deb http://www.apache.org/dist/cassandra/debian 40x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+
+
+Command 'cho' not found, did you mean:
+
+  command 'co' from deb rcs (5.9.4-6)
+  command 'cht' from deb chemtool (1.6.14-5)
+  command 'echo' from deb coreutils (8.30-3ubuntu2)
+  command 'cdo' from deb cdo (1.9.9~rc1-1)
+  command 'who' from deb coreutils (8.30-3ubuntu2)
+
+Try: sudo apt install <deb name>
+
+rishabh@Amazon:~$ deb http://www.apache.org/dist/cassandra/debian 40x main
+
+Command 'deb' not found, did you mean:
+
+  command 'den' from snap den (1.2.0-0)
+  command 'dub' from snap dub (1.19.0)
+  command 'deb3' from deb quilt (0.65-3)
+  command 'derb' from deb icu-devtools (66.1-2ubuntu2.1)
+  command 'dex' from deb dex (0.8.0-2)
+  command 'debc' from deb devscripts (2.20.2ubuntu2)
+  command 'dub' from deb dub (1.19.0-1build2)
+  command 'dep' from deb go-dep (0.5.4-3)
+  command 'edb' from deb edb-debugger (1.0.0-1build3)
+  command 'debi' from deb devscripts (2.20.2ubuntu2)
+  command 'dab' from deb bsdgames (2.17-28build1)
+
+See 'snap info <snapname>' for additional versions.
+
+rishabh@Amazon:~$ echo "deb http://www.apache.org/dist/cassandra/debian 40x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+deb http://www.apache.org/dist/cassandra/debian 40x main
+rishabh@Amazon:~$ apt update
+Reading package lists... Done
+E: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)
+E: Unable to lock directory /var/lib/apt/lists/
+W: Problem unlinking the file /var/cache/apt/pkgcache.bin - RemoveCaches (13: Permission denied)
+W: Problem unlinking the file /var/cache/apt/srcpkgcache.bin - RemoveCaches (13: Permission denied)
+rishabh@Amazon:~$ sudo apt update
+Hit:2 https://dl.google.com/linux/chrome/deb stable InRelease                  
+Get:3 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]      
+Hit:4 http://dell.archive.canonical.com focal InRelease                        
+Get:1 https://downloads.apache.org/cassandra/debian 40x InRelease [3,902 B]    
+Get:5 https://downloads.apache.org/cassandra/debian 40x/main amd64 Packages [690 B]
+Get:6 https://downloads.apache.org/cassandra/debian 40x/main i386 Packages [690 B]
+Hit:7 http://in.archive.ubuntu.com/ubuntu focal InRelease
+Hit:8 http://in.archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:9 http://in.archive.ubuntu.com/ubuntu focal-backports InRelease
+Fetched 119 kB in 4s (28.7 kB/s)
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+23 packages can be upgraded. Run 'apt list --upgradable' to see them.
+rishabh@Amazon:~$ sudo apt install cassandra
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libaopalliance-java libapache-pom-java libatinject-jsr330-api-java
+  libcdi-api-java libcommons-cli-java libcommons-io-java libcommons-lang3-java
+  libcommons-parent-java libgeronimo-annotation-1.3-spec-java
+  libgeronimo-interceptor-3.0-spec-java libguava-java libguice-java
+  libhawtjni-runtime-java libice-dev libjansi-java libjansi-native-java
+  libjline-java libjsr305-java liblog4j1.2-java libmaven-parent-java
+  libmaven-resolver-java libmaven-shared-utils-java libmaven3-core-java
+  libplexus-cipher-java libplexus-classworlds-java
+  libplexus-component-annotations-java libplexus-interpolation-java
+  libplexus-sec-dispatcher-java libplexus-utils2-java libpthread-stubs0-dev
+  libsisu-inject-java libsisu-plexus-java libslf4j-java libsm-dev
+  libwagon-file-java libwagon-http-shaded-java libwagon-provider-api-java
+  libx11-dev libxau-dev libxcb1-dev libxdmcp-dev libxerces2-java
+  libxml-commons-external-java libxml-commons-resolver1.1-java libxt-dev
+  libzookeeper-java x11proto-core-dev x11proto-dev xorg-sgml-doctools
+  xtrans-dev
+Use 'sudo apt autoremove' to remove them.
+Suggested packages:
+  cassandra-tools
+The following NEW packages will be installed:
+  cassandra
+0 upgraded, 1 newly installed, 0 to remove and 23 not upgraded.
+Need to get 47.5 MB of archives.
+After this operation, 58.8 MB of additional disk space will be used.
+Get:1 https://downloads.apache.org/cassandra/debian 40x/main amd64 cassandra all 4.0.4 [47.5 MB]
+Fetched 47.5 MB in 4min 28s (177 kB/s)                                                                                                                                                                    
+Selecting previously unselected package cassandra.
+(Reading database ... 289149 files and directories currently installed.)
+Preparing to unpack .../cassandra_4.0.4_all.deb ...
+Unpacking cassandra (4.0.4) ...
+Setting up cassandra (4.0.4) ...
+Adding group `cassandra' (GID 134) ...
+Done.
+vm.max_map_count = 1048575
+net.ipv4.tcp_keepalive_time = 300
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+Processing triggers for systemd (245.4-4ubuntu3.17) ...
+rishabh@Amazon:~$ /bin/sqlsh
+bash: /bin/sqlsh: No such file or directory
+rishabh@Amazon:~$ /bin/cqlsh
+Connection error: ('Unable to connect to any servers', {'127.0.0.1:9042': ConnectionRefusedError(111, "Tried connecting to [('127.0.0.1', 9042)]. Last error: Connection refused")})
+rishabh@Amazon:~$ cqlsh
+Connected to Test Cluster at 127.0.0.1:9042
+[cqlsh 6.0.0 | Cassandra 4.0.4 | CQL spec 3.4.5 | Native protocol v5]
+Use HELP for help.
+cqlsh> create keyspace sparkdata with replication ={'class':'SimpleStrategy','replication_factor':1};
+cqlsh> use sparkdata;
+cqlsh:sparkdata> CREATE TABLE cust_data (fname text , lname text , url text,product text , cnt counter ,primary key (fname,lname,url,product));
+cqlsh:sparkdata> select * from cust_data;
+
+ fname | lname | url | product | cnt
+-------+-------+-----+---------+-----
+
+(0 rows)
+cqlsh:sparkdata> exit()
+Improper exit command.
+cqlsh:sparkdata> 
+[1]+  Stopped                 cqlsh
+rishabh@Amazon:~$ bin/spark-shell --packages "com.datastax.spark:spark-cassandra-connector_2.11:2.0.2","org.apache.spark:spark-streaming-kafka-0-8_2.11:2.0.0"
+bash: bin/spark-shell: No such file or directory
+rishabh@Amazon:~$ 
+
